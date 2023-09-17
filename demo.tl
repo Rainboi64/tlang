@@ -1,8 +1,8 @@
-fn fib(n) {
-  if (n < 2) return n;
-  return fib(n - 2) + fib(n - 1);
+fn factorial(n) {
+	if (n < 2) return 1;
+	return n * factorial(n - 1);
 }
 
-let start = clock();
-print fib(35);
-print clock() - start;
+for (let a = 1; a < 10; a = a + 1) {
+    print factorial(a);
+}
