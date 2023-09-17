@@ -331,12 +331,11 @@ InterpretResult interpret(const char* source) {
     ObjFunction* function = compile(source);
     if (function == NULL) return INTERPRET_COMPILE_ERROR;
 
+    push(OBJ_VAL(function));
     CallFrame* frame = &vm.frames[vm.frameCount++];
     frame->function = function;
     frame->ip = function->chunk.code;
     frame->slots = vm.stack;
-    push(OBJ_VAL(function));
 
-    call(function, 0);
     return run();
 }
